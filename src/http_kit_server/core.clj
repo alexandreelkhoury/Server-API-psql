@@ -60,6 +60,19 @@
         _ (jdbc/delete! db :users ["user_id = ?" id])]
     {:status 200}))
 
+(defn update-first-name [req]
+  (let [id (Integer/parseInt (:id (:path-params req)))
+        new_first_name (:first_name (:body-params req))]
+    (jdbc/update! db :users {:first_name new_first_name} ["user_id = ?" id])
+    {:status 200
+     :body (jdbc/query db ["SELECT * FROM users where user_id = ?" id])}))
+
+(defn update-last-name [req]
+  (let [id (Integer/parseInt (:id (:path-params req)))
+        new_last_name (:last_name (:body-params req))]
+    (jdbc/update! db :users {:last_name new_last_name} ["user_id = ?" id])
+    {:status 200
+     :body (jdbc/query db ["SELECT * FROM users where user_id = ?" id])}))
 ;;  /////   SERVER    /////
 
 (def routes 
@@ -95,7 +108,19 @@
              :handler update-user}
        :delete {:summary "Delete user by ID"
                 :parameters {:path {:id integer?}}
-                :handler delete-user}}]]])
+                :handler delete-user}}]
+    
+    ["/:id/first_name"
+      {:put {:summary "Update user's first name by ID"
+             :parameters {:path {:id integer?}
+                           :body {:first_name string?}}
+             :handler update-first-name}}]
+    
+    ["/:id/last_name"
+      {:put {:summary "Update user's last name by ID"
+             :parameters {:path {:id integer?}
+                           :body {:last_name string?}}
+             :handler update-last-name}}]]])
 
 (def router
   (ring/router routes
@@ -120,8 +145,6 @@
 
 (defn -main
   [& args]
-  ;;(println (get-user 7))
-  ;;(println (get-users))
   (http/run-server #'app {:port 8081})
   (println "Server started at http:/127.0.0.1:8081/")
 )
