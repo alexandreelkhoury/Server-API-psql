@@ -11,12 +11,13 @@
             [reitit.ring.middleware.exception :as exception]
             ;; [org.clojure/core.async :as async]
             [clojure.java.jdbc :as jdbc]
-            [clojure.data.json :as json]))
+            [clojure.data.json :as json]
+            ;;[org.postgresql.util.PSQLException :as PSQLException]
+            ))
 
 ;;  /////   DATABASE    /////
 
 (def db
-  "Reference to the database."
   {:dbtype "postgresql"
    :dbname "clojuredb"
    :user "alexkhoury"
@@ -29,29 +30,37 @@
                                  [:first_name "VARCHAR(16)"]
                                  [:last_name "VARCHAR(16)"]]))
 
-(defn get-users []
-  (json/generate-string 
-    {:status 200 
-     :body (first (jdbc/query db ["SELECT * FROM users"]))}))
-
-(defn get-user [id]
-  (json/write-str 
+(defn get-users [req]
   {:status 200
-   :body (first (jdbc/query db ["SELECT * FROM users where user_id = ?" id]))})
-  )
+   :body (jdbc/query db ["SELECT * FROM users"])})
 
-(defn add-user [first_name last_name]
-  (jdbc/insert! db :users {:first_name first_name :last_name last_name}))
+(defn get-user [req]
+  (let [id (Integer/parseInt (:id (:path-params req)))
+        res (jdbc/query db ["SELECT * FROM users where user_id = ?" id])]
+    {:status 200
+     :body (first res)}))
 
-(defn update-user [old_last_name new_last_name]
-  (jdbc/update! db :users {:last_name new_last_name} ["last_name = ?" old_last_name]))
+(defn add-user [req]
+  (let [first_name (:first_name (:body-params req))
+        last_name (:last_name (:body-params req))]
+    {:status 200
+     :body (jdbc/insert! db :users {:first_name first_name :last_name last_name})}))
 
-(defn delete-user [id]
-  (jdbc/delete! db :users ["user_id = ?" id]))
+(defn update-user [req]
+  (let [id (Integer/parseInt (:id (:path-params req)))
+        new_first_name (:first_name (:body-params req))
+        new_last_name (:last_name (:body-params req))]
+    (jdbc/update! db :users {:first_name new_first_name} ["user_id = ?" id])
+    (jdbc/update! db :users {:last_name new_last_name} ["user_id = ?" id])
+    {:status 200
+     :body (jdbc/query db ["SELECT * FROM users where user_id = ?" id])}))
+
+(defn delete-user [req]
+  (let [id (Integer/parseInt (:id (:path-params req)))
+        _ (jdbc/delete! db :users ["user_id = ?" id])]
+    {:status 200}))
 
 ;;  /////   SERVER    /////
-
-(def ok (constantly {:status 200 :body "ok"}))
 
 (def routes 
   [["/swagger.json"
@@ -111,8 +120,8 @@
 
 (defn -main
   [& args]
-  (println (get-user 7))
-  (println (get-users))
+  ;;(println (get-user 7))
+  ;;(println (get-users))
   (http/run-server #'app {:port 8081})
   (println "Server started at http:/127.0.0.1:8081/")
 )
