@@ -1,0 +1,67 @@
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+"I ~ 💖 ~ Paredit"
+clj꞉hello-paredit꞉> 
+#'hello-paredit/move
+clj꞉hello-paredit꞉> 
+#'hello-paredit/move
+clj꞉hello-paredit꞉> 
+; Syntax error compiling at (/home/alexkhoury/metav.rs/http-kit/http-kit-server/src/http_kit_server/core.clj:9:1).
+; Unable to resolve symbol: defn in this context
+clj꞉http-kit-server.core꞉> 
+; Syntax error compiling at (GitHub Copilot:0:0).
+; Unable to resolve symbol: Synthesizing in this context
+clj꞉user꞉> 
+; Syntax error compiling at (GitHub Copilot:0:0).
+; Unable to resolve symbol: Synthesizing in this context
+clj꞉user꞉> 
+; Syntax error compiling at (GitHub Copilot:0:0).
+; Unable to resolve symbol: Synthesizing in this context
+clj꞉user꞉> 
+; Syntax error compiling at (/home/alexkhoury/metav.rs/http-kit/http-kit-server/src/http_kit_server/core.clj:16:10).
+; No such namespace: ig
+clj꞉http-kit-server.core꞉> 
+; nREPL Connection was closed
+; Aborting connect, error determining connect sequence.
+; Syntax error compiling at (/home/alexkhoury/metav.rs/http-kit/http-kit-server/src/http_kit_server/core.clj:16:10).
+; Unable to resolve symbol: println in this context
+clj꞉http-kit-server.core꞉> 
+; Syntax error compiling at (/home/alexkhoury/metav.rs/http-kit/http-kit-server/src/http_kit_server/core.clj:0:0).
+; Unable to resolve symbol: comment in this context
+clj꞉http-kit-server.core꞉> 
+; Syntax error compiling at (/home/alexkhoury/metav.rs/http-kit/http-kit-server/src/http_kit_server/core.clj:16:1).
+; Unable to resolve symbol: comment in this context
+clj꞉http-kit-server.core꞉> 
+; Aborting connect, error determining connect sequence.
+; nREPL Connection was closed

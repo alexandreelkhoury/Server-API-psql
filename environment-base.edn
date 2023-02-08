@@ -1,0 +1,16 @@
+{:http/server
+ {:port 8081
+  :max-body 67108864
+  :handler #ig/ref :api/handler}
+
+ :api/handler
+ {:db #ig/ref :db/postgresql}
+
+ :db/postgresql
+ {:classname "org.postgresql.Driver"
+  :dbtype "postgresql"
+  :dbname "clojuredb"
+  :user "alexkhoury"
+  :password "mypassword"
+  :host "localhost"
+  :port 5432}}
